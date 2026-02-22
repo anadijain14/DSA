@@ -23,7 +23,7 @@ int add(int a,int b){
 }
 int main() {
     greet();
-    great("Tulsi");
+    great("ANADI");
     // 1st way
     int a=add(8,3);
     cout<<a<<endl;
