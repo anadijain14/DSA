@@ -35,32 +35,72 @@
 
 //     return 0;
 // }                    
+
+
+
+
+
+
+
+
+// #include <iostream>
+// using namespace std;
+
+// int findIndex(int arr[], int n, int m) {
+//     for(int i = 0; i < n; i++) {
+//         if(arr[i] == m) {
+//             return i;   // return index if found
+//         }
+//     }
+//     return -1;  // return -1 if not found
+// }
+
+// int main() {
+//     int n;
+//     cin >> n;
+
+//     int arr[n];   // array of size n
+
+//     for(int i = 0; i < n; i++) {
+//         cin >> arr[i];
+//     }
+
+//     int m;
+//     cin >> m;
+
+//     int result = findIndex(arr, n, m);
+
+//     cout << result;
+
+//     return 0;
+// }
+
+
 #include <iostream>
 using namespace std;
 
-int findIndex(int arr[], int n, int m) {
+int linear_search(int arr[], int n, int key) {
     for(int i = 0; i < n; i++) {
-        if(arr[i] == m) {
-            return i;   // return index if found
+        if(arr[i] == key) {
+            return i;
         }
     }
-    return -1;  // return -1 if not found
+    return -1;
 }
 
 int main() {
-    int n;
+    int n, key;
     cin >> n;
 
-    int arr[n];   // array of size n
+    int arr[1000];
 
     for(int i = 0; i < n; i++) {
         cin >> arr[i];
     }
 
-    int m;
-    cin >> m;
+    cin >> key;
 
-    int result = findIndex(arr, n, m);
+    int result = linear_search(arr, n, key);
 
     cout << result;
 
