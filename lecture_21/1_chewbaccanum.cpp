@@ -30,12 +30,15 @@ int main(){
             rev =rev*10+k;
             l++;
         }
-        if (inv < k){
-            rev = rev*10+inv;
+        if (k == 9){
+            rev = rev*10+9;
             l--;
 
         }
         else{
+            rev = rev*10+k;
+            l--;
+        }
             rev = rev*10+k;
             l--;
         }

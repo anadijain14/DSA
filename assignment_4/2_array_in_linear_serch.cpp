@@ -75,6 +75,8 @@
 //     return 0;
 // }
 
+// sir ne diya solution 
+
 
 #include <iostream>
 using namespace std;
