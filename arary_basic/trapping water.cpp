@@ -1,34 +1,37 @@
 #include <iostream>
 #include <vector>
 using namespace std;
-int trap(vector<int>& height) {
-    int n = height.size();
-    int left = 0 , right = n-1;
-    int answer = 0;
-    int rightmax = 0 , leftmax = 0;
-    while(left<right){
-        if(height[left]<=height[right]){
-            if(leftmax>=height[left]){
-                answer+=leftmax-height[left];
-            }
-            else{
-                leftmax=height[left];
-            }
-            left++;
-        }
-        else{
-            if(rightmax>=height[right]){
-                answer+=rightmax-height[right];
-            }
-            else{
-                rightmax=height[right];
-            }
-            right--;
-        }
-    }
-    return answer;
-}
+
 int main() {
-    
-    return 0;
+
+    int t;
+    cin >> t;
+
+    while(t--) {
+
+        int n;
+        cin >> n;
+
+        vector<long long> arr(n);
+        for(int i=0;i<n;i++)
+            cin >> arr[i];
+
+        vector<long long> left(n), right(n);
+
+        left[0] = arr[0];
+        for(int i=1;i<n;i++)
+            left[i] = max(left[i-1], arr[i]);
+
+        right[n-1] = arr[n-1];
+        for(int i=n-2;i>=0;i--)
+            right[i] = max(right[i+1], arr[i]);
+
+        long long water = 0;
+
+        for(int i=0;i<n;i++)
+            water += min(left[i], right[i]) - arr[i];
+
+        cout << water << endl;
+    }
+
 }
