@@ -20,7 +20,7 @@ int main() {
 
     //initalization
 
-    int second [ 1 ,7 , 3 ];
+    int second[3] = { 1 ,7 , 3 };
 
     //accecing an element 
 
