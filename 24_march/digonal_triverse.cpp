@@ -1,58 +1,40 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
-using namespace std;
+#include <stdio.h>
+#include <stdlib.h>
 
-int main() {
-    int m,n;
-    cin>>m>>n;
-    vector<vector<int>> mat(m,vector<int>(n));
-    for(int i=0;i<m;i++){
-        for(int j=0;j<n;j++){
-            cin>>mat[i][j];
+int* findDiagonalOrder(int** matrix, int m, int n, int* returnSize) {
+    int* ans = (int*)malloc(sizeof(int) * m * n);
+
+    int d = 1;   // direction
+    int row = 0;
+    int col = 0;
+
+    for (int i = 0; i < m * n; i++) {
+        ans[i] = matrix[row][col];
+
+        row -= d;
+        col += d;
+
+        // out-of-bounds handling
+        if (row == m) {
+            row = m - 1;
+            col += 2;
+            d = -d;
+        }
+        if (col == n) {
+            col = n - 1;
+            row += 2;
+            d = -d;
+        }
+        if (row < 0) {
+            row = 0;
+            d = -d;
+        }
+        if (col < 0) {
+            col = 0;
+            d = -d;
         }
     }
-    bool up =true;
-    int i=0;
-    int r=0,c=0;
-    vector<int> ans(m*n);
-    while(r<m and c<n){
-        if(up){
-            while(r>0 and c<n-1){
-                ans[i]=mat[r][c];
-                i++;
-                r--;
-                c++;
-            }
-            ans[i]=mat[r][c];
-            i++;
-            if(c==n-1){
-                r++;
-            }
-            else{
-                c++;
-            }
-        }
-        else{
-            while(c>0 and r<m-1){
-                ans[i]=mat[r][c];
-                i++;
-                r++;
-                c--;
-            }
-            ans[i]=mat[r][c];
-            i++;
-            if(r==m-1){
-                c++;
-            }
-            else{
-                r++;
-            }
-        }
-        up=!up;
-    }
-    for(int i=0;i<ans.size();i++){
-        cout<<ans[i]<<" ";
-    }
-    return 0;
+
+    *returnSize = m * n;
+    return ans;
 }
