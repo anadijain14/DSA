@@ -1,23 +1,37 @@
 #include <iostream>
+#include <vector>
 using namespace std;
 
-int main() {
-    int arr[] = {64, 25, 12, 22, 11};
-    int n = 5;
+vector<int> solve(vector<int>& num) {
+    int n = num.size();
+    vector<int> ans(n);
 
-    for(int i = 0; i < n-1; i++) {
-        int minIndex = i;
-        for(int j = i+1; j < n; j++) {
-            if(arr[j] < arr[minIndex]) {
-                minIndex = j;
-            }
+    int l = 0;
+    int r = n - 1;
+
+    while (l <= r) {
+        int ls = num[l];
+        int rs = num[r];
+
+        if (ls < rs) {
+            ans[l] = ls;
+        } else {
+            ans[l] = rs;
         }
-        swap(arr[i], arr[minIndex]);
+
+        l++;
+        r--;
     }
 
-    cout << "Sorted array: ";
-    for(int i = 0; i < n; i++) {
-        cout << arr[i] << " ";
+    return ans;
+}
+
+int main() {
+    vector<int> num = {5, 3, 8, 1, 9};
+    vector<int> result = solve(num);
+
+    for (int i = 0; i < result.size(); i++) {
+        cout << result[i] << " ";
     }
 
     return 0;
