@@ -1,17 +1,20 @@
-class Solution {
- public:
-  vector<int> sortArrayByParityII(vector<int>& nums) {
-    const int n = nums.size();
+#include <iostream>
+using namespace std;
 
-    for (int i = 0, j = 1; i < n; i += 2, j += 2) {
-      while (i < n && nums[i] % 2 == 0)
-        i += 2;
-      while (j < n && nums[j] % 2 == 1)
-        j += 2;
-      if (i < n)
-        swap(nums[i], nums[j]);
+int power(int x, int y) {
+    int result = 1;
+    for(int i = 1; i <= y; i++) {
+        result = result * x;
     }
+    return result;
+}
 
-    return nums;
-  }
-};
+int main() {
+    int a, b;
+    cout << "Enter base and power: ";
+    cin >> a >> b;
+
+    cout << "Result = " << power(a, b);
+
+    return 0;
+}
