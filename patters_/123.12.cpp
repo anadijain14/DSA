@@ -1,1 +1,0 @@
-reverse(arr, arr + n);
